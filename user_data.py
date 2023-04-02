@@ -14,6 +14,7 @@ def load_users():
     for res in user_db.find():
         user = User(res['id'])
         user.garant = res['garant']
+        user.ban = res['ban']
         if res['room'] != 'None':
             user.room = room_data.get_room_with_name(res['room'])
         users.append(user)
@@ -31,7 +32,8 @@ def save_users():
                     {
                         'id': user.user_id,
                         'room': user.room.name if user.room else 'None',
-                        'garant': user.garant
+                        'garant': user.garant,
+                        'ban': user.ban
                     }
             }
         )

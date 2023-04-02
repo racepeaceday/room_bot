@@ -14,6 +14,7 @@ def load_rooms():
         room = Room(room_id=res['id'], password=res['password'], name=res['name'], owner=res['owner'])
         room.users = res['users']
         room.messages = res['messages']
+        room.limit = res['limit']
         rooms.append(room)
     print('Комнаты загружены')
 
@@ -41,7 +42,8 @@ def save_rooms():
                         'name': room.name,
                         'password': room.password,
                         'users': room.users,
-                        'messages': room.messages
+                        'messages': room.messages,
+                        'limit': room.limit
                     }
             }
 
